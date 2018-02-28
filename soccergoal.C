@@ -6,8 +6,21 @@ void blink(int seconds);
 #define MAX = 14;
 #define MIN = 4;
 
+task score() {
+	blink(10);
+	
+
+}
+
 task main() {
-	blink(5);
+
+	while (true) {
+
+		if (SensorValue(sonar) >= MIN && SensorValue(sonar) <= MAX) {
+
+		}
+
+	}
 
 	/*
 	while(true) {
