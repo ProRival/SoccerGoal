@@ -1,9 +1,10 @@
-#pragma config(Sensor, in1,    lineTest,       sensorLineFollower)
+#pragma config(Sensor, dgtl4,  sonar,          sensorSONAR_cm)
 #pragma config(Motor,  port2,           flashLight,    tmotorVexFlashlight, openLoop, reversed)
 
 void blink(int seconds);
 
-#define THRESHOLD = 0
+#define MAX = 14;
+#define MIN = 4;
 
 task main() {
 	blink(5);
