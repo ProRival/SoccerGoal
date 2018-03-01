@@ -1,5 +1,5 @@
-#pragma config(Sensor, dgtl4,  sonar,          sensorSONAR_cm)
-#pragma config(Motor,  port2,           flashLight,    tmotorVexFlashlight, openLoop, reversed)
+#pragma config(Sensor, dgtl4,  sonar, sensorSONAR_cm)
+#pragma config(Motor,  port2, flashLight,  tmotorVexFlashlight, openLoop)
 
 void blink(int seconds);
 
@@ -8,8 +8,7 @@ void blink(int seconds);
 
 task score() {
 	blink(10);
-	
-
+	wait(5);
 }
 
 task main() {
@@ -17,30 +16,14 @@ task main() {
 	while (true) {
 
 		if (SensorValue(sonar) >= MIN && SensorValue(sonar) <= MAX) {
+			//ball is in the goal.
+			startTask(score);
 
 		}
+
+		waitInMilliseconds(10);
 
 	}
-
-	/*
-	while(true) {
-
-		if (SensorValue(V) < 2950 ||SensorValue(II)<2990||SensorValue(III)<2990||SensorValue(IV)<2950) {
-			turnFlashlightOn(flash, 127);
-			wait(.5);
-			turnFlashlightOff(flash);
-			wait(.5);
-			playSound(soundBeepBeep);
-			turnFlashlightOn(flash, 127);
-			wait(.5);
-			turnFlashlightOff(flash);
-
-		}
-
-	}*/
-}
-
-
 
 void blink(int seconds) {
 	turnFlashlightOff(flashLight);
