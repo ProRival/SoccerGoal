@@ -3,27 +3,20 @@
 
 void blink(int seconds);
 
-#define MAX = 14;
-#define MIN = 4;
-
-task score() {
-	blink(10);
-	wait(5);
-}
-
 task main() {
 
 	while (true) {
 
-		if (SensorValue(sonar) >= MIN && SensorValue(sonar) <= MAX) {
+		if ((SensorValue(sonar) >= 4) && (SensorValue(sonar) <= 14)) {
 			//ball is in the goal.
-			startTask(score);
-
+			blink(10);
+			wait(10);
 		}
 
 		waitInMilliseconds(10);
-
 	}
+}
+
 
 void blink(int seconds) {
 	turnFlashlightOff(flashLight);
